@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <div class="button-row">
+    <a mat-mini-fab color="primary" [routerLink]="['/contacts']">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+  </div>
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{contacts.contact_name}} {{contacts.contact_surname}}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>{{contacts.contact_number}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-actions>
+      <a mat-fab color="primary" [routerLink]="['/contact-edit', contactId]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-fab color="warn" (click)="deleteContact(contactId)">
+        <mat-icon>delete</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

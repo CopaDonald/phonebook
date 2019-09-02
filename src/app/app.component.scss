@@ -1,0 +1,29 @@
+$midnight-blue : #2c3e50;
+$white : #fff;
+$magical-gray: #333;
+
+.app-header {
+    background-color: $midnight-blue;
+    padding: 20px 10px;
+    z-index: 5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.app-title {
+    margin-top: 0;
+    color: $magical-gray;
+}
+
+.row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 85em;
+}
+
+.container {
+    padding: 0 20px;
+}

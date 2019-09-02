@@ -1,0 +1,30 @@
+<div class="add-contact button-row">
+  <button mat-fab color="primary" [routerLink]="['/contact-add']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div class="row">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search phonebook">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="filterDataSource" class="mat-elevation-z8" matSort matSortActive="contact_name"
+    matSortDisableClear matSortDirection="asc">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="contact_name">
+      <td mat-cell *matCellDef="let row">{{row.contact_name}}</td>
+    </ng-container>
+
+    <!-- Surname Column -->
+    <ng-container matColumnDef="contact_surname">
+      <td mat-cell *matCellDef="let row">{{row.contact_surname}}</td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/contact-details/', row.id]"></tr>
+  </table>
+</div>

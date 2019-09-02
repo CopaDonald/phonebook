@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <div class="button-row">
+    <a mat-mini-fab color="primary" [routerLink]="['/contacts']">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+  </div>
+
+  <mat-card class="example-card">
+    <form [formGroup]="contactForm" (ngSubmit)="onFormSubmit(contactForm.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Contact Name" formControlName="contact_name" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!contactForm.get('contact_name').valid && contactForm.get('contact_name').touched">Please enter
+            Contact Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Contact Surname" formControlName="contact_surname" [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!contactForm.get('contact_surname').valid && contactForm.get('contact_surname').touched">Please
+            enter Contact Surname</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Contact Number" formControlName="contact_number" [errorStateMatcher]="matcher"
+          maxlength="10">
+        <mat-error>
+          <span *ngIf="!contactForm.get('contact_number').valid && contactForm.get('contact_number').touched">Please
+            enter Contact Number</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="center button-row">
+        <button type="submit" [disabled]="!contactForm.valid" mat-fab color="primary">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
